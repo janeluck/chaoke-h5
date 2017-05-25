@@ -35,7 +35,9 @@ const config = {
       'node_modules',
       path.join(__dirname, '../node_modules')
     ],
-    extensions: ['*', '.web.js', '.js', '.jsx', '.json'],
+    //webpack2.0会自动加载json-loader用于解析json
+    // - extensions: ['*', '.web.js', '.js', '.jsx', '.json'],
+    extensions: ['*', '.web.js', '.js', '.jsx'],
   },
   externals: project.externals,
   module: {
