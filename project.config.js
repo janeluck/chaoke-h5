@@ -30,5 +30,7 @@ module.exports = {
     'react-redux',
     'redux-thunk',
     'react-router',
+    'immutable',
+    'lodash',
   ],
 }
