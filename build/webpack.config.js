@@ -155,10 +155,6 @@ config.module.rules.push({
   })
 })
 
-console.log(pxtorem({
-              rootValue: 100,
-              propWhiteList: [],
-            }))
 
 config.plugins.push(extractStyles)
 
