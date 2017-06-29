@@ -9,14 +9,14 @@ const karmaConfig = {
   singleRun: !argv.watch,
   coverageReporter: {
     reporters: [
-      { type: 'text-summary' },
+      {type: 'text-summary'},
     ],
   },
   files: [{
-    pattern  : TEST_BUNDLER,
-    watched  : false,
-    served   : true,
-    included : true
+    pattern: TEST_BUNDLER,
+    watched: false,
+    served: true,
+    included: true
   }],
   frameworks: ['mocha'],
   reporters: ['mocha'],
@@ -39,7 +39,8 @@ const karmaConfig = {
       'react/addons': 'react',
       'react/lib/ExecutionEnvironment': 'react',
       'react/lib/ReactContext': 'react',
-    },
+    }
+
   },
   webpackMiddleware: {
     stats: 'errors-only',

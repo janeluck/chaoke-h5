@@ -5,6 +5,9 @@ const logger = require('../build/lib/logger')
 const webpackConfig = require('../build/webpack.config')
 const project = require('../project.config')
 const compress = require('compression')
+// 添加代理服务
+const proxy = require('http-proxy-middleware');
+
 
 const app = express()
 app.use(compress())
@@ -17,13 +20,13 @@ if (project.env === 'development') {
 
   logger.info('Enabling webpack development and HMR middleware')
   app.use(require('webpack-dev-middleware')(compiler, {
-    publicPath  : webpackConfig.output.publicPath,
-    contentBase : path.resolve(project.basePath, project.srcDir),
-    hot         : true,
-    quiet       : false,
-    noInfo      : false,
-    lazy        : false,
-    stats       : 'normal',
+    publicPath: webpackConfig.output.publicPath,
+    contentBase: path.resolve(project.basePath, project.srcDir),
+    hot: true,
+    quiet: false,
+    noInfo: false,
+    lazy: false,
+    stats: 'normal',
   }))
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr'
@@ -34,6 +37,10 @@ if (project.env === 'development') {
   // of development since this directory will be copied into ~/dist
   // when the application is compiled.
   app.use(express.static(path.resolve(project.basePath, 'public')))
+
+  // 配置代理服务
+  app.use('/api', proxy({target: "http://10.10.3.195:92", pathRewrite: {"^/api": ""}}));
+
 
   // This rewrites all routes requests to the root /index.html file
   // (ignoring file requests). If you want to implement universal
@@ -49,6 +56,8 @@ if (project.env === 'development') {
       res.end()
     })
   })
+
+
 } else {
   logger.warn(
     'Server is being run outside of live development mode, meaning it will ' +

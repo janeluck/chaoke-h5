@@ -194,6 +194,7 @@ config.module.rules.push({
   })
 })
 
+
 // HTML Template
 // ------------------------------------
 config.plugins.push(new HtmlWebpackPlugin({
@@ -214,6 +215,12 @@ if (__DEV__) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   )
+/*  config.proxy = {
+    "/api": {
+      target: "http://10.10.3.195:92",
+      pathRewrite: {"^/api" : ""}
+    }
+  }*/
 }
 
 // Bundle Splitting

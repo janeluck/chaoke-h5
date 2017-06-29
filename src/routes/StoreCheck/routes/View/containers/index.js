@@ -1,16 +1,6 @@
 import React from 'react'
 import {Button} from 'antd-mobile'
-const View = () => (
-  <div>
-
-     巡店详情 巡店详情 巡店详情
-
-  </div>
-)
-
-
-
-
+import View from '../components'
 
 import { connect } from 'react-redux'
 
