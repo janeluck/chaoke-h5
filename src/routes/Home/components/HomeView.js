@@ -4,7 +4,7 @@ import './HomeView.scss'
 import {Button} from 'antd-mobile'
 export const HomeView = () => (
   <div>
-    <h4>Welcome</h4>
+    <h4>1111111Welcome</h4>
     <Button>button</Button>
       <Button className="btn" type="primary">primary button</Button>
         <Button className="btn" disabled onClick={e => console.log(e)}>
