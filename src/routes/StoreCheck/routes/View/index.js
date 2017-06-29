@@ -16,7 +16,6 @@ export default (store) => ({
 
       /*  Return getComponent   */
       const  View = require('./containers').default
-      console.log(View)
       cb(null, View)
 
     /* Webpack named bundle   */
