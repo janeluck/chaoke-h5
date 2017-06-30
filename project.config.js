@@ -7,7 +7,7 @@ const developer = {
   'yangtianming': 7
 }
 const currentDeveloper = process.env.PATH.match(/jianyu|yangtianming/)
-const portNumber = currentDeveloper && currentDeveloper[0] || '0'
+const portNumber = currentDeveloper && developer[currentDeveloper[0]] || '0'
 
 module.exports = {
   /** The environment to use when building the project */
