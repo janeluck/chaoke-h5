@@ -2,9 +2,12 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// 增加svg解析器
+//const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const project = require('../project.config')
 // 增加高清方案 https://mobile.ant.design/docs/react/introduce-cn
 const pxtorem = require('postcss-pxtorem');
+
 
 const inProject = path.resolve.bind(path, project.basePath)
 const inProjectSrc = (file) => inProject(project.srcDir, file)
@@ -205,6 +208,21 @@ config.plugins.push(new HtmlWebpackPlugin({
   },
 }))
 
+
+//svg
+
+//config.plugins.push(new SpriteLoaderPlugin())
+
+
+config.module.rules.push({
+  test: /\.svg$/,
+  include: require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. 属于 antd-mobile 内置 svg 文件
+  // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 自己私人的 svg 存放目录
+
+  loader: 'svg-sprite-loader'
+})
+
+
 // Development Tools
 // ------------------------------------
 if (__DEV__) {
@@ -215,12 +233,12 @@ if (__DEV__) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   )
-/*  config.proxy = {
-    "/api": {
-      target: "http://10.10.3.195:92",
-      pathRewrite: {"^/api" : ""}
-    }
-  }*/
+  /*  config.proxy = {
+   "/api": {
+   target: "http://10.10.3.195:92",
+   pathRewrite: {"^/api" : ""}
+   }
+   }*/
 }
 
 // Bundle Splitting

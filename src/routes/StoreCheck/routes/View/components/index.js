@@ -4,7 +4,7 @@ import reqwest from 'reqwest'
 import scrm from 'components/common/scrm'
 
 reqwest({
-  url: scrm.url('/rest/scrmCheck/checkPoint')
+  url: scrm.url('/scrm/storeCheck/view')
 })
 export const View = () => (
   <div>

@@ -1,6 +1,7 @@
 const ip = require('ip')
 const NODE_ENV = process.env.NODE_ENV || 'development'
-
+console.log(process.env.PATH)
+//smb开发
 module.exports = {
   /** The environment to use when building the project */
   env: NODE_ENV,
