@@ -1,7 +1,6 @@
 const ip = require('ip')
 const NODE_ENV = process.env.NODE_ENV || 'development'
 //smb开发
-console.log(process.env.PATH)
 const developer = {
   'jianyu': 6,
   'yangtianming': 7
