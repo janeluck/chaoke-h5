@@ -1,7 +1,14 @@
 const ip = require('ip')
 const NODE_ENV = process.env.NODE_ENV || 'development'
-console.log(process.env.PATH)
 //smb开发
+console.log(process.env.PATH)
+const developer = {
+  'jianyu': 6,
+  'yangtianming': 7
+}
+const currentDeveloper = process.env.PATH.match(/jianyu|yangtianming/)
+const portNumber = currentDeveloper && currentDeveloper[0] || '0'
+
 module.exports = {
   /** The environment to use when building the project */
   env: NODE_ENV,
@@ -13,8 +20,10 @@ module.exports = {
   main: 'main',
   /** The name of the directory in which to emit compiled assets */
   outDir: 'dist',
+  // 开发人员对应端口号
+  portNumber,
   /** The base path for all projects assets (relative to the website root) */
-  publicPath: NODE_ENV === 'development' ? `http://${ip.address()}:3000/` : '/scrm/',
+  publicPath: NODE_ENV === 'development' ? `http://${ip.address()}:900${portNumber}/` : '/scrm/',
   /** Whether to generate sourcemaps */
   sourcemaps: true,
   /** A hash map of keys that the compiler should treat as external to the project */
@@ -35,4 +44,5 @@ module.exports = {
     'lodash',
     'antd-mobile',
   ],
+
 }

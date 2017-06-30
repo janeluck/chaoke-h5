@@ -39,7 +39,7 @@ if (project.env === 'development') {
   app.use(express.static(path.resolve(project.basePath, 'public')))
 
   // 配置代理服务
-  app.use('/api', proxy({target: "http://test.chaoke.com:4006", pathRewrite: {"^/api": ""}}));
+  app.use('/api', proxy({target: `http://10.10.3.195:400${project.portNumber}`, pathRewrite: {"^/api": ""}}));
 
 
   // This rewrites all routes requests to the root /index.html file
