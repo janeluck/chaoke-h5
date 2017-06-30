@@ -1,5 +1,4 @@
 import React from 'react'
-import {Button} from 'antd-mobile'
 import View from '../components'
 
 import { connect } from 'react-redux'
