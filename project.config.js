@@ -41,8 +41,7 @@ module.exports = {
     'redux-thunk',
     'react-router',
     'immutable',
-    'lodash',
-    'antd-mobile',
+    'lodash'
   ],
 
 }
