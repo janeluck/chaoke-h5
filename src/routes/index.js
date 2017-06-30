@@ -9,7 +9,7 @@ import StoreCheckRoute from './StoreCheck'
 
 export const createRoutes = (store) => ({
   path        : 'scrm',
-  component   : CoreLayout,
+  //component   : CoreLayout,
   indexRoute  : Home,
   childRoutes : [
     CounterRoute(store),
