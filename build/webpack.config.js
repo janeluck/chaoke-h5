@@ -12,6 +12,7 @@ const project = require('../project.config')
 // 增加高清方案 https://mobile.ant.design/docs/react/introduce-cn
 const pxtorem = require('postcss-pxtorem');
 
+// 变更主题颜色
 const fs  = require('fs');
 const lessToJs = require('less-vars-to-js');
 const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../src/styles/theme/default.less'), 'utf8'));
