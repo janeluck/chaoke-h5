@@ -12,6 +12,10 @@ const project = require('../project.config')
 // 增加高清方案 https://mobile.ant.design/docs/react/introduce-cn
 const pxtorem = require('postcss-pxtorem');
 
+const fs  = require('fs');
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../src/styles/theme/default.less'), 'utf8'));
+
 
 const inProject = path.resolve.bind(path, project.basePath)
 const inProjectSrc = (file) => inProject(project.srcDir, file)
@@ -88,7 +92,7 @@ config.module.rules.push({
             useBuiltIns: true // we polyfill Object.assign in src/normalize.js
           },
         ],
-        ['import', {libraryName: 'antd-mobile', style: 'css'}]
+        ['import', {libraryName: 'antd-mobile', style: true}]
       ],
       presets: [
         'babel-preset-react',
@@ -158,6 +162,56 @@ config.module.rules.push({
           ]
         }
       }
+    ],
+  })
+})
+
+
+config.module.rules.push({
+  test: /\.(less)$/,
+  loader: extractStyles.extract({
+    fallback: 'style-loader',
+    use: [
+
+      {
+        loader: 'css-loader?importLoaders=1',
+        options: {
+          sourceMap: project.sourcemaps,
+          minimize: {
+            autoprefixer: {
+              add: true,
+              remove: true,
+              browsers: ['last 2 versions'],
+            },
+            discardComments: {
+              removeAll: true,
+            },
+            discardUnused: false,
+            mergeIdents: false,
+            reduceIdents: false,
+            safe: true,
+            sourcemap: project.sourcemaps,
+          },
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: [
+            pxtorem({
+              rootValue: 100,
+              propWhiteList: [],
+            })
+          ]
+        }
+      },
+      {
+        loader: 'less-loader',
+        options: {
+          modifyVars: themeVariables
+        }
+      },
+
     ],
   })
 })
