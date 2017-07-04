@@ -16,7 +16,7 @@ const scrm = {
   // 返回app内部
   goBack: function () {
 
-    alert(window.jsObj)
+    alert(window.jsObj.goBack)
     window.jsObj && window.jsObj.goBack()
   }
 }
