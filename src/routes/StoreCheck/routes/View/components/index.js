@@ -8,16 +8,30 @@ reqwest({
 })
 export const View = () => (
   <div>
-    巡店详情浏览
-    <Button loading>loading btn</Button>
-     <NavBar leftContent="back"
+     <NavBar
       mode="light"
       onLeftClick={() => console.log('onLeftClick')}
-      rightContent={[
-        <Icon key="0" type="search" style={{ marginRight: '0.32rem' }} />,
-        <Icon key="1" type="ellipsis" />,
-      ]}
-    >NavBar</NavBar>
+    >巡店详情</NavBar>
+    <div>
+      <div>
+        <p>黑塔利亚</p>
+        <p>巡店时间</p>
+        <p>姚斌</p>
+      </div>
+      <div>
+
+        <p>照片说明</p>
+        <div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
 
   </div>
 )
