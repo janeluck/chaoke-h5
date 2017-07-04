@@ -13,7 +13,10 @@ const scrm = {
 
     return str + "?token=" + token
   },
+  // 返回app内部
   goBack: function () {
+
+    alert(window.jsObj)
     window.jsObj && window.jsObj.goBack()
   }
 }
