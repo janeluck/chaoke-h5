@@ -14,7 +14,7 @@ const scrm = {
     return str + "?token=" + token
   },
   goBack: function () {
-    window.goBack && window.goBack()
+    window.jsObj && window.jsObj.goBack()
   }
 }
 
