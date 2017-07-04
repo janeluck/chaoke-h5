@@ -10,7 +10,7 @@ export const View = () => (
   <div>
      <NavBar
       mode="light"
-      onLeftClick={() => console.log('onLeftClick')}
+      onLeftClick={scrm.goBack}
     >巡店详情</NavBar>
     <div>
       <div>
