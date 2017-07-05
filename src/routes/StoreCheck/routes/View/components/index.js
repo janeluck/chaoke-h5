@@ -58,9 +58,9 @@ class View extends React.Component {
           </div>
 
 
-          <Modal visible={visible} closable onClose={this.onClose} selectedIndex={selectedIndex}>
+          <Modal visible={visible} closable onClose={this.onClose} >
             <div style={{marginTop: '25%'}}>
-              <Carousel>
+              <Carousel selectedIndex={selectedIndex}>
                 {_.map(imgs, (url, i) => <div key={`Carousel-${i}`}><img src={url} /></div>)}
 
               </Carousel>
