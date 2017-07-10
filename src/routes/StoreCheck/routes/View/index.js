@@ -15,8 +15,7 @@ export default (store) => ({
       injectReducer(store, { key: 'view', reducer })*/
 
       /*  Return getComponent   */
-      const  View = require('./containers').default
-      cb(null, View)
+      cb(null, require('./containers').default)
 
     /* Webpack named bundle   */
     })
