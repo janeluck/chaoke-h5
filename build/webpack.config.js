@@ -93,7 +93,7 @@ config.module.rules.push({
             useBuiltIns: true // we polyfill Object.assign in src/normalize.js
           },
         ],
-        ['import', {libraryName: 'antd-mobile', style: true}]
+        ['import', [{libraryName: 'antd-mobile', style: true}, {libraryName: 'antd', style: true}]]
       ],
       presets: [
         'babel-preset-react',
