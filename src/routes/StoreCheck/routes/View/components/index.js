@@ -4,10 +4,38 @@ import PropTypes from 'prop-types'
 import reqwest from 'reqwest'
 import scrm from 'components/common/scrm'
 import {Button, NavBar, Icon, Carousel, Modal} from 'antd-mobile'
+import {Table as AntdTable}   from 'antd'
 import _ from 'lodash'
 reqwest({
   url: scrm.url('/scrm/storeCheck/view')
 })
+
+const dataSource = [{
+  key: '1',
+  name: 'Mike',
+  age: 32,
+  address: '10 Downing Street'
+}, {
+  key: '2',
+  name: 'John',
+  age: 42,
+  address: '10 Downing Street'
+}];
+
+const columns = [{
+  title: 'Name',
+  dataIndex: 'name',
+  key: 'name',
+}, {
+  title: 'Age',
+  dataIndex: 'age',
+  key: 'age',
+}, {
+  title: 'Address',
+  dataIndex: 'address',
+  key: 'address',
+}];
+
 
 class View extends React.Component {
   constructor(props) {
@@ -44,6 +72,11 @@ class View extends React.Component {
           <p>巡店时间</p>
           <p>姚斌</p>
         </div>
+
+        <div>
+          <AntdTable dataSource={dataSource} columns={columns}/>
+          <AntdTable />
+        </div>
         <div>
 
           <p>照片说明</p>
@@ -58,10 +91,10 @@ class View extends React.Component {
           </div>
 
 
-          <Modal visible={visible} closable onClose={this.onClose} >
+          <Modal visible={visible} closable onClose={this.onClose}>
             <div style={{marginTop: '25%'}}>
               <Carousel selectedIndex={selectedIndex}>
-                {_.map(imgs, (url, i) => <div key={`Carousel-${i}`}><img src={url} /></div>)}
+                {_.map(imgs, (url, i) => <div key={`Carousel-${i}`}><img src={url}/></div>)}
 
               </Carousel>
             </div>
